@@ -1,5 +1,4 @@
-﻿using System;
-using static System.Console;
+﻿using static System.Console;
 
 namespace HW03.Birthday
 {
@@ -7,28 +6,37 @@ namespace HW03.Birthday
     {
         static void Main(string[] args)
         {
-            int birthYear;
-            int birthMonth;
-            int curYear;
-            int curMonth;
+            ushort birthYear;
+            ushort birthMonth;
+            ushort curYear;
+            ushort curMonth;
 
-            WriteLine("Введите год рождения: ");
-            birthYear = int.Parse(ReadLine());
-
-            WriteLine("Введите месяц рождения: ");
-            birthMonth = int.Parse(ReadLine());
-
-            WriteLine("Введите текущий год: ");
-            curYear = int.Parse(ReadLine());
-
-            WriteLine("Введите текущий месяц: ");
-            curMonth = int.Parse(ReadLine());
-
-            if (curYear >= birthYear)
+            while (true)
             {
-                WriteLine($"Ваш возраст: \nлет: {curYear - birthYear} \nмесяцев: {curMonth - birthMonth}");
+                WriteLine("Введите год рождения: ");
+                birthYear = ushort.Parse(ReadLine());
+
+                WriteLine("Введите месяц рождения: ");
+                birthMonth = ushort.Parse(ReadLine());
+
+                WriteLine("Введите текущий год: ");
+                curYear = ushort.Parse(ReadLine());
+
+                WriteLine("Введите текущий месяц: ");
+                curMonth = ushort.Parse(ReadLine());
+
+                if (curYear >= birthYear & birthMonth < 13 &
+                    curMonth < 13)
+                {
+                    WriteLine($"Ваш возраст: \nЛет: {curYear - birthYear} \nМесяцев: {curMonth - birthMonth}");
+                }
+                else
+                {
+                    WriteLine("Введенные даты некорректны");   
+                }
+                ReadLine();
+                Clear();
             }
-            ReadLine();
         }
     }
 }
