@@ -25,8 +25,7 @@ namespace HW03.Birthday
                 WriteLine("Введите текущий месяц: ");
                 curMonth = ushort.Parse(ReadLine());
 
-                if (curYear >= birthYear & birthMonth < 13 &
-                    curMonth < 13)
+                if (curYear >= birthYear & birthMonth < 13 & curMonth < 13)
                 {
                     WriteLine($"Ваш возраст: \nЛет: {curYear - birthYear} \nМесяцев: {curMonth - birthMonth}");
                 }
