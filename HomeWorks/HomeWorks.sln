@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HW04", "HW04", "{6559897C-FDCE-4496-82A9-A81D4BF74F99}"
+	ProjectSection(SolutionItems) = preProject
+		HW04.Task7.txt = HW04.Task7.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW04.Task1", "HW04.Task1\HW04.Task1.csproj", "{0F0108D0-79E6-4062-914F-5D7B3D5807C9}"
 EndProject
