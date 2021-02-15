@@ -24,6 +24,7 @@ namespace HW04.Task1
             {
                 WriteLine("Вы ввели не число!\nВведите число:");
             }
+            
             WriteLine($"\n{numb1} + {numb2} = {numb1 + numb2}"); 
         }
     }
