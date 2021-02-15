@@ -12,7 +12,8 @@ namespace HW04.Task4
         {
             double numb1;       //Вводимое число 1
             double numb2;       //Вводимое число 2
-            double buffer;      //Вспомогательная переменная
+            double buffer1;     //Вспомогательная переменная 1
+            string buffer2;     //Вспомогательная переменная 2
 
             WriteLine("Введите первое число:");
             while (!double.TryParse(ReadLine(), out numb1))   //Конвертация строки в число, если это возможно. Иначе повторить ввод  
@@ -26,33 +27,33 @@ namespace HW04.Task4
                 WriteLine("Вы ввели не число!\nВведите число:");
             }
 
-        point:
-
             WriteLine("Введите + или - :");
-            switch (ReadLine())
+            buffer2 = ReadLine();
+            while (buffer2 != "+" & buffer2 != "-")
             {
-                case "+":
-                    WriteLine("Введите сумму чисел:");
-                    while (!double.TryParse(ReadLine(), out buffer) || buffer != (numb1 + numb2))
-                    {
-                        WriteLine("Почти угадал...");
-                        WriteLine($"Попробуй число больше {numb1 + numb2 - 3} и меньше {numb1 + numb2 + 3}");
-                    }
-                    WriteLine("Угадал!");
-                    break;
+                WriteLine("Вы ввели не + или -!\nВведите + или -:");
+                buffer2 = ReadLine();
+            }
 
-                case "-":
-                    WriteLine("Введите разность чисел:");
-                    while (!double.TryParse(ReadLine(), out buffer) || buffer != (numb1 - numb2))
-                    {
-                        WriteLine("Почти угадал...");
-                        WriteLine($"Попробуй число больше {numb1 - numb2 - 3} и меньше {numb1 - numb2 + 3}");
-                    }
-                    WriteLine("Угадал!");
-                    break;
-
-                default:
-                    goto point;      //Возврат к вводу оператора, если он неверный
+            if (buffer2 == "+")
+            {
+                WriteLine("Введите сумму чисел:");
+                while (!double.TryParse(ReadLine(), out buffer1) || buffer1 != (numb1 + numb2))
+                {
+                    WriteLine("Почти угадал...");
+                    WriteLine($"Попробуй число больше {numb1 + numb2 - 3} и меньше {numb1 + numb2 + 3}");
+                }
+                WriteLine("Угадал!");
+            }
+            else
+            {
+                WriteLine("Введите разность чисел:");
+                while (!double.TryParse(ReadLine(), out buffer1) || buffer1 != (numb1 - numb2))
+                {
+                    WriteLine("Почти угадал...");
+                    WriteLine($"Попробуй число больше {numb1 - numb2 - 3} и меньше {numb1 - numb2 + 3}");
+                }
+                WriteLine("Угадал!");
             }
         }
     }
