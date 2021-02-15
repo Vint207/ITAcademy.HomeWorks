@@ -4,8 +4,7 @@ using static System.Console;
 namespace HW04.Task1
 {
     public static class Calc
-    {
-        
+    {        
         /// <summary>
         /// Write sum of two input numbers if it is a numbers
         /// </summary>
