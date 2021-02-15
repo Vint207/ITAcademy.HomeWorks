@@ -5,6 +5,10 @@ namespace HW04.Task3
 {
     public static class Calc
     {
+        /// <summary>
+        /// Check input sum of two input numbers if it is a numbers. 
+        /// Prove the sum and offer a hint
+        /// </summary>
         public static void Sum()
         {
             double numb1;       //Вводимое число 1
@@ -12,19 +16,19 @@ namespace HW04.Task3
             double buffer;      //Вспомогательная переменная
 
             WriteLine("Введите первое число:");
-            while (double.TryParse(ReadLine(), out numb1) != true)   //Конвертация строки в число, если это возможно. Иначе повторить ввод  
+            while (!double.TryParse(ReadLine(), out numb1))   //Конвертация строки в число, если это возможно. Иначе повторить ввод  
             {
-                WriteLine("Введите число:");
+                WriteLine("Вы ввели не число!\nВведите число:");
             }
 
             WriteLine("Введите второе число:");
-            while (double.TryParse(ReadLine(), out numb2) != true)
+            while (!double.TryParse(ReadLine(), out numb2))
             {
-                WriteLine("Введите число:");
+                WriteLine("Вы ввели не число!\nВведите число:");
             }
 
             WriteLine("Введите сумму чисел:");
-            while (double.TryParse(ReadLine(), out buffer) != true ||  buffer != (numb1 + numb2))
+            while (!double.TryParse(ReadLine(), out buffer) ||  buffer != (numb1 + numb2))
             {
                 WriteLine("Почти угадал...");
                 WriteLine($"Попробуй число больше {numb1 + numb2 - 3} и меньше {numb1 + numb2 + 3}");
