@@ -25,7 +25,9 @@ namespace HW04.Task4
             {
                 WriteLine("Вы ввели не число!\nВведите число:");
             }
+
         point:
+
             WriteLine("Введите + или - :");
             switch (ReadLine())
             {
