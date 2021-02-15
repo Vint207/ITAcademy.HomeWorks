@@ -32,6 +32,7 @@ namespace HW04.Task2
             {
                 WriteLine("Почти угадал...");
             }
+            
             WriteLine("Угадал!");
         }
     }
