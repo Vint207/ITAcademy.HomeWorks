@@ -33,6 +33,7 @@ namespace HW04.Task3
                 WriteLine("Почти угадал...");
                 WriteLine($"Попробуй число больше {numb1 + numb2 - 3} и меньше {numb1 + numb2 + 3}");
             }
+            
             WriteLine("Угадал!");
         }
     }
