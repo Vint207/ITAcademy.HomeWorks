@@ -15,17 +15,17 @@ namespace HW._05.Task3
 
             switch (true)
             {
-                case true when Now.Hour > 8 & Now.Hour < 12:
+                case true when Now.Hour >= 8 & Now.Hour < 12:
 
                     WriteLine("Good morning, guys");
                     break;
 
-                case true when Now.Hour > 11 & Now.Hour < 15:
+                case true when Now.Hour >- 12 & Now.Hour < 15:
 
                     WriteLine("Good day, guys");
                     break;
 
-                case true when Now.Hour > 14 & Now.Hour < 22:
+                case true when Now.Hour >= 15 & Now.Hour < 22:
 
                     WriteLine("Good evening, guys");
                     break;
