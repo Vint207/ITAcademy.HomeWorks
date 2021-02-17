@@ -23,7 +23,7 @@ namespace HW._05.Task3
                     WriteLine("Good morning, guys");
                     break;
 
-                case true when hour > -12 && hour < 15:
+                case true when hour >= 12 && hour < 15:
 
                     WriteLine("Good day, guys");
                     break;
