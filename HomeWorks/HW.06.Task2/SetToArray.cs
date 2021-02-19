@@ -16,12 +16,5 @@ namespace HW._06.Task2
                 a[i] = a[i - 1];
             }
         }
-
-        public static void Reverse(Array array)
-        {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
-            Array.Reverse(array, array.GetLowerBound(0), array.Length);
-        }
     }
 }
