@@ -32,9 +32,6 @@ namespace HW._05.Task3
 
                     WriteLine("Good evening, guys");
                     break;
-
-                default:
-                    break;
             }
         }
     }
