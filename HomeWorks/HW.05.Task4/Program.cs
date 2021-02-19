@@ -34,9 +34,6 @@ namespace LettersCount
                         case 'А':
                             count4++;
                             break;
-
-                        default:
-                            break;
                     }
                 }
                 WriteLine($"\nБукв а в слове:");
