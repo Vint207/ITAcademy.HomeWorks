@@ -9,7 +9,7 @@ namespace HW._06.Task2
         /// </summary>
         /// <param name="a"> array of int </param>
         /// <param name="index"> Start index to shift </param>
-        public static void Shift(ref int[] a, int index)
+        public static void Shift(int[] a, int index)
         {
             for (int i = a.Length-1; i > index; i--)
             {

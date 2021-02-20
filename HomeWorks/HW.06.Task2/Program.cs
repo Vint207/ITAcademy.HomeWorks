@@ -38,7 +38,7 @@ namespace HW._06.Task2
             }
 
             Array.Resize(ref a1, a1.Length + 1);
-            UserArray.Shift(ref a1, index);
+            UserArray.Shift(a1, index);
             a1.SetValue(val, index);
 
             WriteLine($"Массив: {string.Join(' ', a1)}");

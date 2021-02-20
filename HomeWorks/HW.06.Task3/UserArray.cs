@@ -1,4 +1,6 @@
-﻿namespace HW._06.Task3
+﻿using System;
+
+namespace HW._06.Task3
 {
     public static class UserArray
     {
@@ -6,9 +8,10 @@
         /// Reverses an array of int
         /// </summary>
         /// <param name="a">reference to array of int</param>
-        public static void Reverse(ref int[] a)
+        public static void Reverse(long[] a)
         {
-            int buf, j; 
+            long buf;
+            int j;
 
             j = a.Length - 1;
             for (int i = 0; i < j; i++, j--)
