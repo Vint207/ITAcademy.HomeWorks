@@ -23,6 +23,7 @@ namespace HW._06.Task1
                 {
                     WriteLine("Вы ввели не целое число!");
                 }
+
                 a3[i] = a1[i] + a2[i];
             }
 

@@ -10,7 +10,7 @@ namespace HW._06.Task2
         {
             int[] a1 = new int[10];
             int val, index;
-            
+
             for (int i = 0; i < 9; i++)
             {
                 WriteLine($"Введите целочисленный элемент массива номер {i + 1}");
@@ -20,6 +20,7 @@ namespace HW._06.Task2
                     WriteLine("Вы ввели не целое число!");
                 }
             }
+
             Clear();
 
             WriteLine($"Массив: {string.Join(' ', a1)}");
@@ -36,17 +37,8 @@ namespace HW._06.Task2
                 WriteLine("Вы ввели не целое число!\nВведите целое число:");
             }
 
-            WriteLine($"Введите 1, если хотите расширить массив:");
-            if (ReadLine() == "1")
-            {
-                Array.Resize(ref a1, a1.Length + 1);
-                SetToArray.SetVal(ref a1, index);
-            }
-            else
-            {
-                SetToArray.SetVal(ref a1, index);  
-            }
- 
+            Array.Resize(ref a1, a1.Length + 1);
+            UserArray.Shift(ref a1, index);
             a1.SetValue(val, index);
 
             WriteLine($"Массив: {string.Join(' ', a1)}");

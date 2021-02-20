@@ -1,6 +1,7 @@
 ﻿using System;
 using static System.Console;
 
+
 namespace HW._06.Task3
 {
     class Program
@@ -17,8 +18,10 @@ namespace HW._06.Task3
             }
 
             WriteLine($"Массив до реверсии: {string.Join(' ', a1)}");
-            Array.Reverse(a1);
-            WriteLine($"Первый после реверсии: {string.Join(' ', a1)}");
+
+            UserArray.Reverse(ref a1);
+
+            WriteLine($"Массив после реверсии: {string.Join(' ', a1)}");
         }
     }
 }
