@@ -27,10 +27,7 @@ namespace HW._06.Task3
             SWatch.Stop();
 
             WriteLine($"Массив после реверсии: {string.Join(' ', a1)}");
-
-            long ts = SWatch.ElapsedTicks;
-
-            WriteLine($"RunTicks: {ts}");
+            WriteLine($"RunTicks: {SWatch.ElapsedTicks}");
         }
     }
 }
