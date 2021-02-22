@@ -28,12 +28,9 @@ namespace HW._06.Task3
 
             WriteLine($"Массив после реверсии: {string.Join(' ', a1)}");
 
-            TimeSpan ts = SWatch.Elapsed;
+            long ts = SWatch.ElapsedTicks;
 
-            string eTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
-
-            WriteLine($"RunTime {eTime}");
+            WriteLine($"RunTicks: {ts}");
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace HW._06.Task3
 {
-    public static class UserArray
+    public abstract class UserArray
     {
         /// <summary>
         /// Reverses an array of int
@@ -15,7 +15,7 @@ namespace HW._06.Task3
 
             j = a.Length - 1;
             for (int i = 0; i < j; i++, j--)
-            {
+                {
                 buf = a[i];
                 a[i] = a[j];
                 a[j] = buf;
@@ -23,3 +23,5 @@ namespace HW._06.Task3
         }
     }
 }
+
+
