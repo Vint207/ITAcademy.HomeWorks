@@ -8,10 +8,11 @@
         /// <param name="a">reference to array of int</param>
         public static void Reverse(long[] a)
         {
-            long buf;
-            int j;
+            long buf;  //Буферная переменная
+            int j;     //Длина массива
 
             j = a.Length - 1;
+
             for (int i = 0; i < j; i++, j--)
                 {
                 buf = a[i];

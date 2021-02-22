@@ -9,7 +9,7 @@ namespace HW._06.Task2
         static void Main(string[] args)
         {
             int[] a1 = new int[10];
-            int val, index;
+            int val, index;            //Значение и адрес для вставки
 
             for (int i = 0; i < 9; i++)
             {
