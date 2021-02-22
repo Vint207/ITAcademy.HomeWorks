@@ -37,7 +37,6 @@ namespace HW._06.Task2
                 WriteLine("Вы ввели не целое число!\nВведите целое число:");
             }
 
-            Array.Resize(ref a1, a1.Length + 1);
             UserArray.Shift(a1, index);
             a1.SetValue(val, index);
 
