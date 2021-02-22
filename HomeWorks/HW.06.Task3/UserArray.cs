@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HW._06.Task3
+﻿namespace HW._06.Task3
 {
     public abstract class UserArray
     {
@@ -23,5 +21,3 @@ namespace HW._06.Task3
         }
     }
 }
-
-
