@@ -1,6 +1,4 @@
-﻿using System.Text;
-using System;
-using static System.Console;
+﻿using static System.Console;
 
 namespace HW07.Task2
 {
@@ -47,7 +45,7 @@ namespace HW07.Task2
                     s1[i] = buf;
                 }
             }
-            return s = string.Join(" ", s1, 0, s1.Length - 1);
+            return string.Join(" ", s1, 0, s1.Length - 1);
         }
 
         /// <summary>
@@ -59,8 +57,8 @@ namespace HW07.Task2
         {
             string[] s1 = s.Split(' ');
 
-            int max, min;           //Номера самого длинного и короткого слова в массиве
-            string temp1, temp2;    //Буферные переменные
+            int max, min;                //Номера самого длинного и короткого слова в массиве
+            string temp1, temp2, buf;    //Буферные переменные
 
             min = max = 0;
 
@@ -80,11 +78,11 @@ namespace HW07.Task2
                 }
             }
 
-            string buf = s1[min];
+            buf = s1[min];
             s1[min] = s1[max];
             s1[max] = buf;
 
-            return s = string.Join(" ", s1, 0, s1.Length);
+            return string.Join(" ", s1);
         }
 
         /// <summary>
@@ -122,7 +120,7 @@ namespace HW07.Task2
 
             for (int i = 0, j = s1.Length - 1; i < j; i++, j--)
             {
-                for (int k = 0; k < s1.Length - 1; k++)
+                for (int k = 0; k < j; k++)
                 {
                     if (s1[k].Length > s1[k + 1].Length)
                     {
