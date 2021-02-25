@@ -9,7 +9,6 @@ namespace HW07.Task2
         static void Main(string[] args)
         {
             string s1;           //Вводимая строка
-            int letters, signs;  //Количство букв знаков препинания
 
             WriteLine("Введите несколько слов через пробел:");
 
@@ -21,7 +20,7 @@ namespace HW07.Task2
             Write("Замена мест самого длинного и самого короткого слова:\n" + ReplaceWords(s1));
             WriteLine("\n");
 
-            CountSymbols(s1, out letters, out signs);
+            CountSymbols(s1, out int letters, out int signs);
             WriteLine("Количество букв в строке: " + letters);
             WriteLine("Количество знаков препинания в строке: " + signs);
             WriteLine("\n");
