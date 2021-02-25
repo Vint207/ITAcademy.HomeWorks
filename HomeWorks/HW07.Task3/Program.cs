@@ -1,6 +1,6 @@
-﻿using System.Text;
-using System;
-using static System.Console;
+﻿using static System.Console;
+using static System.Convert;
+
 
 namespace HW07.Task3
 {
@@ -8,10 +8,9 @@ namespace HW07.Task3
     {
         static void Main(string[] args)
         {
-            string s1, s2, s3;
-            byte find;
-            char sign;
-
+            string s1, s2, s3;  //Исходная и вспомогательные строки
+            byte find;          //Стадия поиска чисел в строке
+            char sign;          //Знак в строке
 
             WriteLine("Введите набор букв и цифр, добавив арифметический знак:");
 
@@ -29,7 +28,7 @@ namespace HW07.Task3
                         {
                             s2 = string.Concat(s2, item);
                         }
-                        else if (item.Equals('+') || item.Equals('-') || item.Equals('8') || item.Equals('/'))
+                        else if (item.Equals('+') || item.Equals('-') || item.Equals('*') || item.Equals('/'))
                         {
                             find = 2;
                             sign = item;
@@ -39,7 +38,7 @@ namespace HW07.Task3
                     case 2:
                         if (char.IsDigit(item))
                         {
-                            s3 = string.Concat(s3, item);
+                            s3 = string.Concat(s3, item);                           
                         }
                         break;
                 }
@@ -48,19 +47,19 @@ namespace HW07.Task3
             switch (sign)
             {
                 case '+':
-                    WriteLine($"{s2} + {s3} = {Convert.ToDouble(s2) + Convert.ToDouble(s3)}");
+                    WriteLine($"{s2} + {s3} = {ToDouble(s2) + ToDouble(s3)}");
                     break;
 
                 case '-':
-                    WriteLine($"{s2} - {s3} = {Convert.ToDouble(s2) - Convert.ToDouble(s3)}");
+                    WriteLine($"{s2} - {s3} = {ToDouble(s2) - ToDouble(s3)}");
                     break;
 
                 case '*':
-                    WriteLine($"{s2} * {s3} = {Convert.ToDouble(s2) * Convert.ToDouble(s3)}");
+                    WriteLine($"{s2} * {s3} = {ToDouble(s2) * ToDouble(s3)}");
                     break;
 
                 case '/':
-                    WriteLine($"{s2} / {s3} = {Convert.ToDouble(s2) / Convert.ToDouble(s3)}");
+                    WriteLine($"{s2} / {s3} = {ToDouble(s2) / ToDouble(s3)}");
                     break;
             }     
         }
