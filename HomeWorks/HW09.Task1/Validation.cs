@@ -1,9 +1,18 @@
-﻿namespace HW09.Task1
+﻿using static System.Console;
+
+namespace HW09.Task1
 {
-    class Validation
+    class Validation : Phrases
     {
 
-        public static bool Check(string s, string request, out string buf)
+        public static void CheckInfo(string request, out string s)
+        {
+            s = "";
+            while (!Check(ReadLine(), request, out s))
+            { WriteLine($"{Phrase("Wrong1")} {Phrase("Wrong2")}"); }
+        }
+
+        private static bool Check(string s, string request, out string buf)
         {
             buf = "Неизвестно";
 

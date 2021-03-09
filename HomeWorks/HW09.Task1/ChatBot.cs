@@ -2,42 +2,34 @@
 
 namespace HW09.Task1
 {
-    class ChatBot
+    class ChatBot : Phrases
     {
-        private string name = "";
-        private string ticket = "";
-        private string pasport = "";
-        private string baggage = "";
+        public string botName;
+
+        public ChatBot() { botName = "Гробик"; }
+
+        public ChatBot(string n) { botName = n; }
 
         public void Chat()
         {
-            WriteLine("Здравствуйте. Представьтесь, пожалуйста:");
-            Request("Name", out name);
-            WriteLine($"Привет, {name}");
+            UserInfo user = new();
 
-            WriteLine($"{name}, введи номер билета:");
-            Request("Ticket", out ticket);
-            WriteLine($"Номер билета {ticket} принят");
+            WriteLine($"{Phrase("Greet")}, {user.name}. Звать меня {botName}. А тебя как?");
+            Validation.CheckInfo("Name", out user.name);
+            WriteLine($"{Phrase("Greet")}, {user.name}.");
 
-            WriteLine($"{name}, введи номер паспорта:");
-            Request("Pasport", out pasport);
-            WriteLine($"Номер паспорта {pasport} принят");
+            WriteLine($"{user.name}, введи номер билета:");
+            Validation.CheckInfo("Ticket", out user.ticket);
+            WriteLine($"Номер билета {user.ticket} {Phrase("Prove")}.");
 
-            WriteLine($"{name}, введи \"Да\", если у тебя есть багаж, и - \"Нет\", если нет:");
-            Request("Baggage", out baggage);
+            WriteLine($"{user.name}, введи номер паспорта:");
+            Validation.CheckInfo("Pasport", out user.pasport);
+            WriteLine($"Номер паспорта {user.pasport} {Phrase("Prove")}.");
 
-            GetInfo();
-        }
+            WriteLine($"{user.name}, введи \"Да\", если у тебя есть багаж, и - \"Нет\", если нет:");
+            Validation.CheckInfo("Baggage", out user.baggage);
 
-        public void GetInfo() => WriteLine($"Имя: {name} \nНомер билета: {ticket} \nНомер паспорта: {pasport} \nБагаж: {baggage}");
-
-        void Request(string request, out string s)
-        {
-            s = "";
-            while (!Validation.Check(ReadLine(), request, out s))
-            {
-                WriteLine("Некорректные данные. Повтори попытку:");
-            }
+            user.GetInfo();
         }
     }
 }
