@@ -1,8 +1,9 @@
 ﻿using static System.Console;
+using static HW09.Task1.Phrases;
 
 namespace HW09.Task1
 {
-    class Validation : Phrases
+    class Validation 
     {
 
         public static void CheckInfo(string request, out string s)
