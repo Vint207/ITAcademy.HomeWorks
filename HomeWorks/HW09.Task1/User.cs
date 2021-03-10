@@ -2,9 +2,10 @@
 
 namespace HW09.Task1
 {
-    public class UserInfo
+    public class User
     {
         public string name = "Незнакомец";
+        public string password = "";
         public string ticket = "Неизвестно";
         public string pasport = "Неизвестно";
         public string baggage = "Неизвестно";
