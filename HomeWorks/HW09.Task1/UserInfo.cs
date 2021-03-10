@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Console;
+﻿using static System.Console;
 
 namespace HW09.Task1
 {
-    class UserInfo
+    public class UserInfo
     {
         public string name = "Незнакомец";
-        public string ticket;
-        public string pasport;
-        public string baggage;
+        public string ticket = "Неизвестно";
+        public string pasport = "Неизвестно";
+        public string baggage = "Неизвестно";
 
         public void GetInfo()
         {

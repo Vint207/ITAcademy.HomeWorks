@@ -20,11 +20,8 @@ namespace HW09.Task1
             switch (s)
             {
                 case "Greet": return Greeting[rand.Next(0, Greeting.Length)];
-
                 case "Prove": return Prove[rand.Next(0, Prove.Length)];
-
                 case "Wrong1": return WrongPhrase1[rand.Next(0, WrongPhrase1.Length)];
-
                 case "Wrong2": return WrongPhrase2[rand.Next(0, WrongPhrase2.Length)];
             }
             return "";
