@@ -11,6 +11,7 @@ namespace HW09.Task1
             {
                 ChatBot bot = new();              
                 bot.Greeting();
+                ReadLine();
             }
         }
     }
