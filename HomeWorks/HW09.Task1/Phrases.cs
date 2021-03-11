@@ -2,7 +2,7 @@
 
 namespace HW09.Task1
 {
-    class Phrases
+    sealed class Phrases
     {
         internal static readonly string[] Greeting = new string[] { "Привет", "Здравствуй", "Салют", "Будь здоров", "Как дела", "Hello", "Hi", "Что как",
         "Приетсвую тебя", "Хеллоу", "Хай", "Как сам", "Даров"};
@@ -18,6 +18,9 @@ namespace HW09.Task1
 
         internal static readonly string[] Praise = new string[] { "Молодец", "Красавчик", "Все правильно", "Так держать", "Четко", "Отлично", "Хорошо" };
 
+        internal static readonly string[] Upset = new string[] { "Почему?", "Мда...", "Это так сложно?", "Тогда ничем не могу помочь.", "Касса возле входа.", "Как так?",
+         "Это несложно.", "Чего ты ждешь?", "Жду.", "Буду ждать."};
+
         internal static string Phrase(string s)
         {
             Random rand = new();
@@ -28,6 +31,7 @@ namespace HW09.Task1
                 case "Wrong1": return WrongPhrase1[rand.Next(0, WrongPhrase1.Length)];
                 case "Wrong2": return WrongPhrase2[rand.Next(0, WrongPhrase2.Length)];
                 case "Praise": return Praise[rand.Next(0, Praise.Length)];
+                case "Upset": return Upset[rand.Next(0, Upset.Length)];
             }
             return "???";
         }

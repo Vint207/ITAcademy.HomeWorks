@@ -4,7 +4,7 @@ using static System.Console;
 
 namespace HW09.Task1
 {
-    class ChatBot
+    sealed class ChatBot
     {
         public string botName;
 
@@ -62,7 +62,10 @@ namespace HW09.Task1
 
         private void Chat(User user)
         {
-            WriteLine($"{user.name}, введи 7 цифр номера билета:");
+            WriteLine($"{user.name}, ты уже купил билет?");
+            while (!CheckInfo()) WriteLine($"{Phrase("Upset")} Покупай.\nКупил?");           
+
+            WriteLine($"{Phrase("Praise")}, {user.name}, введи 7 цифр номера билета:");
             CheckInfo("Ticket", out user.ticket);
             WriteLine($"Номер билета {user.ticket} {Phrase("Prove")}.");
 

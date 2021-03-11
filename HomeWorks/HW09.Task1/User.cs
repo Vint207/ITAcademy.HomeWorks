@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace HW09.Task1
 {
-    public class User
+    public sealed class User
     {
         public static List<User> list = new();
 

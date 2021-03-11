@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace HW09.Task1
 {
-    class Program
+    sealed class Program
     {
         static void Main()
         {

@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace HW09.Task1
 {
-    class ConsoleWork 
+    sealed class ConsoleWork 
     {
         internal static bool Chose()
         {
@@ -27,7 +27,8 @@ namespace HW09.Task1
             ForegroundColor = ConsoleColor.Yellow;
             SetCursorPosition(0, GetCursorPosition().Top + rowIn);
             if (write) { Write("->Да "); } else { Write("->Нет"); }
-
+            
+            ForegroundColor = ConsoleColor.Black;
             while (pKey != ConsoleKey.Enter && pKey != nKey) { pKey = ReadKey().Key; }
 
             ForegroundColor = ConsoleColor.White;

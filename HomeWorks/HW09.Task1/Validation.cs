@@ -3,7 +3,7 @@ using static HW09.Task1.Phrases;
 
 namespace HW09.Task1
 {
-    class Validation 
+    sealed class Validation 
     {
 
         internal static bool CheckInfo() => ConsoleWork.Chose();
