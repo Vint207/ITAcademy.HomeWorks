@@ -10,15 +10,14 @@ namespace HW09.Task1
 
         internal static void CheckInfo(string request, out string s)
         {
-            s = "";
-            while (!Check(ReadLine(), request, out s))
-            { WriteLine($"{Phrase("Wrong1")} {Phrase("Wrong2")}"); }
+            s = ReadLine();
+            while (s == "" || !Check(s, request, out s))
+            { WriteLine($"{Phrase("Wrong1")} {Phrase("Wrong2")}"); s = ReadLine(); }
         }
 
         private static bool Check(string s, string request, out string buf)
         {
-            buf = "Неизвестно";
-
+            buf = s;
             switch (request)
             {
                 case "Name":
@@ -33,7 +32,6 @@ namespace HW09.Task1
                     foreach (char i in s) if (!char.IsDigit(i) || s.Length != 6) { return false; }
                     break;
             }
-            buf = s;
             return true;
         }
     }
