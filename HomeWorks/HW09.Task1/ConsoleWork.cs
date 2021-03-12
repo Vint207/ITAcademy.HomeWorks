@@ -5,6 +5,10 @@ namespace HW09.Task1
 {
     sealed class ConsoleWork 
     {
+        /// <summary>
+        /// Switches options in console and returns it if Enter is pushed
+        /// </summary>
+        /// <returns></returns>        
         internal static bool Chose()
         {
             ConsoleKey key = ConsoleKey.DownArrow;
@@ -21,6 +25,10 @@ namespace HW09.Task1
             }
         }
 
+        /// <summary>
+        /// Overwrites options with new style
+        /// </summary>
+        /// <returns></returns>
         internal static bool Overwrite(ConsoleKey key, ConsoleKey nKey, bool write, byte rowOut, int rowIn, out ConsoleKey pKey)
         {
             pKey = key;

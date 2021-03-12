@@ -21,6 +21,10 @@ namespace HW09.Task1
         internal static readonly string[] Upset = new string[] { "Почему?", "Мда...", "Это так сложно?", "Тогда ничем не могу помочь.", "Касса возле входа.", "Как так?",
          "Это несложно.", "Чего ты ждешь?", "Жду.", "Буду ждать."};
 
+        /// <summary>
+        /// Returns random phrase from certain array
+        /// </summary>
+        /// <returns></returns>
         internal static string Phrase(string s)
         {
             Random rand = new();

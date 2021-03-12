@@ -14,6 +14,9 @@ namespace HW09.Task1
         public string baggage = "";
         public string contraband = "Нет";
 
+        /// <summary>
+        /// Returns certain user accaunt data
+        /// </summary>
         public void GetInfo()
         {
             WriteLine($"Имя: {name} \nНомер билета: {ticket} \nНомер паспорта: {pasport} \nБагаж: {baggage} \nКонтрабанда: {contraband}");

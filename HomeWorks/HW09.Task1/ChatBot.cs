@@ -12,6 +12,9 @@ namespace HW09.Task1
 
         public ChatBot(string n) { botName = n; }
 
+        /// <summary>
+        /// Starts registration of new user or changing accaunt data for old user 
+        /// </summary>
         public void Greeting()
         {
             WriteLine($"{Phrase("Greet")}. Звать меня {botName}. Ты зарегистрирован?");
@@ -49,6 +52,10 @@ namespace HW09.Task1
             }
         }
 
+        /// <summary>
+        /// Registrates new user or makes sign in for old user
+        /// </summary>
+        /// <param name="user"></param>
         private void Registration(User user)
         {
             WriteLine($"Введи свое имя. (Используй только буквы)");
@@ -60,6 +67,10 @@ namespace HW09.Task1
             WriteLine($"Пароль {user.password} {Phrase("Prove")}.");
         }
 
+        /// <summary>
+        /// Chates with user and fills accaunt data
+        /// </summary>
+        /// <param name="user"></param>
         private void Chat(User user)
         {
             WriteLine($"{user.name}, ты уже купил билет?");

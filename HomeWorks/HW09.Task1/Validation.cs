@@ -6,8 +6,16 @@ namespace HW09.Task1
     sealed class Validation 
     {
 
+        /// <summary>
+        /// Calls the console chose option method
+        /// </summary>
+        /// <returns></returns>
         internal static bool CheckInfo() => ConsoleWork.Chose();
 
+        /// <summary>
+        /// Call method Check that validates user's input
+        /// </summary>
+        /// <returns></returns>
         internal static void CheckInfo(string request, out string s)
         {
             s = ReadLine();
@@ -15,6 +23,10 @@ namespace HW09.Task1
             { WriteLine($"{Phrase("Wrong1")} {Phrase("Wrong2")}"); s = ReadLine(); }
         }
 
+        /// <summary>
+        /// Validates user's input
+        /// </summary>
+        /// <returns></returns>
         private static bool Check(string s, string request, out string buf)
         {
             buf = s;
