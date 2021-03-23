@@ -4,8 +4,8 @@ namespace HW11
 {
     class MotorcycleContext
     {
-        public List<Motorcycle> Motorcycles { get; set; }
+        public static List<Motorcycle> Motorcycles { get; set; }
 
-        public MotorcycleContext() { Motorcycles = new(); }
+        static MotorcycleContext() { Motorcycles = new(); }
     }
 }

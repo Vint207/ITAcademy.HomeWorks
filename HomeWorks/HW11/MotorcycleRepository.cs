@@ -6,25 +6,22 @@ namespace HW11
 {
     class MotorcycleRepository : IMotorcycleRepository
     {
-        MotorcycleContext db;
-
-        public MotorcycleRepository() { db = new(); }
 
         public void CreateMotorcycle(Motorcycle obj) 
         {
-            db.Motorcycles.Add(obj);
+            MotorcycleContext.Motorcycles.Add(obj);
             Log.Information("The motorcycle object has been created.");
         }
 
         public List<Motorcycle> GetMotorcycle() 
         {
             Log.Information("All motorcycle objects have been taken.");
-            return db.Motorcycles;
+            return MotorcycleContext.Motorcycles;
         }
 
         public Motorcycle GetMotorcycle(long id)
         {         
-            foreach (Motorcycle item in db.Motorcycles)
+            foreach (Motorcycle item in MotorcycleContext.Motorcycles)
             {
                 if (item.Id == id) 
                 {                  
@@ -40,7 +37,7 @@ namespace HW11
         {
             try
             {
-                foreach (Motorcycle item in db.Motorcycles)
+                foreach (Motorcycle item in MotorcycleContext.Motorcycles)
                 {
                     if (item.Id == id) 
                     {
@@ -64,11 +61,11 @@ namespace HW11
 
         public void DeleteMotorcycle(long id) 
         {
-            foreach (Motorcycle item in db.Motorcycles)
+            foreach (Motorcycle item in MotorcycleContext.Motorcycles)
             {
                 if (item.Id == id) 
-                { 
-                    db.Motorcycles.Remove(item);
+                {
+                    MotorcycleContext.Motorcycles.Remove(item);
                     Log.Information("Motorcycle object has been deleted.");
                     return;
                 }
