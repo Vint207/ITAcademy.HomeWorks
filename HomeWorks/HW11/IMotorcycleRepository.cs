@@ -14,6 +14,6 @@ namespace HW11
 
         void UpdateMotorcycle(long id);
 
-        void DeleteMotorcycle(Motorcycle obj);
+        void DeleteMotorcycle(long id);
     }
 }

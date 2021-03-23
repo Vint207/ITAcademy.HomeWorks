@@ -12,23 +12,27 @@ namespace HW11
 
         public void CreateMotorcycle(Motorcycle obj) 
         {
+            db.Motorcycles.Add(obj);
             Log.Information("The motorcycle object has been created.");
-            db.Motorcycles.Add(obj); 
         }
 
         public List<Motorcycle> GetMotorcycle() 
         {
-            Log.Information("All motorcycle objects was taken.");
-            return db.Motorcycles; 
+            Log.Information("All motorcycle objects have been taken.");
+            return db.Motorcycles;
         }
 
         public Motorcycle GetMotorcycle(long id)
-        {
-            Log.Information("Motorcycle object has been taken.");
+        {         
             foreach (Motorcycle item in db.Motorcycles)
             {
-                if (item.Id == id) { return item; }
+                if (item.Id == id) 
+                {                  
+                    Log.Information("Motorcycle object has been taken.");
+                    return item;
+                }
             }
+            Log.Warning("Motorcycle object has not been found or taken.");
             return null;
         }
 
@@ -53,15 +57,23 @@ namespace HW11
                         return; 
                     }
                 }
-                Log.Information("Motorcycle object has not been updated.");
+                Log.Warning("Motorcycle object has not been found or updated.");
             }
             catch (Exception) { Log.Fatal("Wrong input string format"); }
         }
 
-        public void DeleteMotorcycle(Motorcycle obj) 
+        public void DeleteMotorcycle(long id) 
         {
-            Log.Information("Motorcycle object has been deleted.");
-            db.Motorcycles.Remove(obj); 
+            foreach (Motorcycle item in db.Motorcycles)
+            {
+                if (item.Id == id) 
+                { 
+                    db.Motorcycles.Remove(item);
+                    Log.Information("Motorcycle object has been deleted.");
+                    return;
+                }
+            }
+            Log.Warning("Motorcycle object has not been found or deleted.");
         }
     }
 }
