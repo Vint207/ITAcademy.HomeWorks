@@ -7,24 +7,24 @@ namespace HW11
     class MotorcycleRepository : IMotorcycleRepository
     {
 
-        public void CreateMotorcycle(Motorcycle obj) 
+        public void CreateMotorcycle(Motorcycle obj)
         {
             MotorcycleContext.Motorcycles.Add(obj);
             Log.Information("The motorcycle object has been created.");
         }
 
-        public List<Motorcycle> GetMotorcycle() 
+        public List<Motorcycle> GetMotorcycle()
         {
             Log.Information("All motorcycle objects have been taken.");
             return MotorcycleContext.Motorcycles;
         }
 
         public Motorcycle GetMotorcycle(long id)
-        {         
+        {
             foreach (Motorcycle item in MotorcycleContext.Motorcycles)
             {
-                if (item.Id == id) 
-                {                  
+                if (item.Id == id)
+                {
                     Log.Information("Motorcycle object has been taken.");
                     return item;
                 }
@@ -39,9 +39,9 @@ namespace HW11
             {
                 foreach (Motorcycle item in MotorcycleContext.Motorcycles)
                 {
-                    if (item.Id == id) 
+                    if (item.Id == id)
                     {
-                        Console.WriteLine("Inpun new id:");                       
+                        Console.WriteLine("Inpun new id:");
                         item.Id = long.Parse(Console.ReadLine());
 
                         Console.WriteLine("Inpun new Model");
@@ -51,19 +51,19 @@ namespace HW11
                         item.Year = int.Parse(Console.ReadLine());
 
                         Log.Information("Motorcycle object has been updated.");
-                        return; 
+                        return;
                     }
                 }
                 Log.Warning("Motorcycle object has not been found or updated.");
             }
-            catch (Exception) { Log.Fatal("Wrong input string format"); }
+            catch (Exception ex) { Log.Fatal($"Exeption occured: {ex.Message}"); }
         }
 
-        public void DeleteMotorcycle(long id) 
+        public void DeleteMotorcycle(long id)
         {
             foreach (Motorcycle item in MotorcycleContext.Motorcycles)
             {
-                if (item.Id == id) 
+                if (item.Id == id)
                 {
                     MotorcycleContext.Motorcycles.Remove(item);
                     Log.Information("Motorcycle object has been deleted.");
