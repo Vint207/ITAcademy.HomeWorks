@@ -34,7 +34,11 @@ namespace HW09.Task1
                         if (item.name.Equals(name) && item.password.Equals(password))
                         {
                             WriteLine($"{item.name}, ты хочешь изменить данные профиля?)");
-                            if (CheckInfo()) { Registration(item); Chat(item); }
+                            if (CheckInfo()) 
+                            { 
+                                Registration(item);
+                                Chat(item); 
+                            }
                             else { item.GetInfo(); }
                         }
                     }

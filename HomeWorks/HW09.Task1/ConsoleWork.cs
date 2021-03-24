@@ -18,10 +18,14 @@ namespace HW09.Task1
             while (true)
             {
                 if (key.Equals(ConsoleKey.UpArrow))
-                { if (Overwrite(key, ConsoleKey.DownArrow, true, 2, -1, out key)) { return true; } }
+                { 
+                    if (Overwrite(key, ConsoleKey.DownArrow, true, 2, -1, out key)) { return true; } 
+                }
                
                 if (key.Equals(ConsoleKey.DownArrow))
-                { if (Overwrite(key, ConsoleKey.UpArrow, false, 1, 1, out key)) { return false; } }
+                { 
+                    if (Overwrite(key, ConsoleKey.UpArrow, false, 1, 1, out key)) { return false; } 
+                }
             }
         }
 
@@ -40,7 +44,12 @@ namespace HW09.Task1
             while (pKey != ConsoleKey.Enter && pKey != nKey) { pKey = ReadKey().Key; }
 
             ForegroundColor = ConsoleColor.White;
-            if (pKey.Equals(ConsoleKey.Enter)) { SetCursorPosition(0, GetCursorPosition().Top + rowOut); CursorVisible = true; return true; }
+            if (pKey.Equals(ConsoleKey.Enter))
+            {
+                SetCursorPosition(0, GetCursorPosition().Top + rowOut);
+                CursorVisible = true; 
+                return true; 
+            }
           
             SetCursorPosition(0, GetCursorPosition().Top);
             if (write) { Write("Да   "); } else { Write("Нет  "); }
