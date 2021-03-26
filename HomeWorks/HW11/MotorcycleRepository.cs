@@ -21,38 +21,36 @@ namespace HW11
 
         public Motorcycle GetMotorcycle(long id)
         {
-            foreach (Motorcycle item in MotorcycleContext.Motorcycles)
+            Motorcycle item = MotorcycleContext.Motorcycles?.Find(obj => obj.Id == id);
+
+            if (item != null)
             {
-                if (item.Id == id)
-                {
-                    Log.Information("Motorcycle object has been taken.");
-                    return item;
-                }
+                Log.Information("Motorcycle object has been taken.");
+                return item;
             }
             Log.Warning("Motorcycle object has not been found or taken.");
-            return null;
+            return item;
         }
 
         public void UpdateMotorcycle(long id)
         {
             try
             {
-                foreach (Motorcycle item in MotorcycleContext.Motorcycles)
+                Motorcycle item = MotorcycleContext.Motorcycles.Find(obj => obj.Id == id);
+
+                if (item != null)
                 {
-                    if (item.Id == id)
-                    {
-                        Console.WriteLine("Inpun new id:");
-                        item.Id = long.Parse(Console.ReadLine());
+                    Console.WriteLine("Inpun new id:");
+                    item.Id = long.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Inpun new Model");
-                        item.Model = Console.ReadLine();
+                    Console.WriteLine("Inpun new Model");
+                    item.Model = Console.ReadLine();
 
-                        Console.WriteLine("Inpun new Year");
-                        item.Year = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Inpun new Year");
+                    item.Year = int.Parse(Console.ReadLine());
 
-                        Log.Information("Motorcycle object has been updated.");
-                        return;
-                    }
+                    Log.Information("Motorcycle object has been updated.");
+                    return;
                 }
                 Log.Warning("Motorcycle object has not been found or updated.");
             }
@@ -61,14 +59,13 @@ namespace HW11
 
         public void DeleteMotorcycle(long id)
         {
-            foreach (Motorcycle item in MotorcycleContext.Motorcycles)
+            Motorcycle item = MotorcycleContext.Motorcycles.Find(obj => obj.Id == id);
+
+            if (item != null)
             {
-                if (item.Id == id)
-                {
-                    MotorcycleContext.Motorcycles.Remove(item);
-                    Log.Information("Motorcycle object has been deleted.");
-                    return;
-                }
+                MotorcycleContext.Motorcycles.Remove(item);
+                Log.Information("Motorcycle object has been deleted.");
+                return;
             }
             Log.Warning("Motorcycle object has not been found or deleted.");
         }
