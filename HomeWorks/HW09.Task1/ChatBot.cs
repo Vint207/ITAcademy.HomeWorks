@@ -27,7 +27,7 @@ namespace HW09.Task1
                     CheckInfo("Name", out name);
 
                     WriteLine("Введи пароль. (6 цифр)");
-                    CheckInfo("Pasport", out password);
+                    CheckInfo("Password", out password);
 
                     foreach (User item in User.list)
                     {
@@ -67,7 +67,7 @@ namespace HW09.Task1
             WriteLine($"{Phrase("Greet")}, {user.name}.");
 
             WriteLine("Придумай пароль аккаунта. (6 цифр)");
-            CheckInfo("Pasport", out user.password);
+            CheckInfo("Password", out user.password);
             WriteLine($"Пароль {user.password} {Phrase("Prove")}.");
         }
 

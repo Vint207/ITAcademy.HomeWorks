@@ -1,9 +1,10 @@
-﻿using static System.Console;
+﻿using System.Text.RegularExpressions;
 using static HW09.Task1.Phrases;
+using static System.Console;
 
 namespace HW09.Task1
 {
-    sealed class Validation 
+    sealed class Validation
     {
 
         /// <summary>
@@ -28,23 +29,17 @@ namespace HW09.Task1
         /// </summary>
         /// <returns></returns>
         private static bool Check(string s, string request, out string buf)
-        {
+        {   
             buf = s;
-            switch (request)
+            return request switch
             {
-                case "Name":
-                    foreach (char i in s) if (!char.IsLetter(i)) { return false; }
-                    break;
+                "Name" => Regex.IsMatch(buf, @"^[a-w\|а-я]{1,12}$", RegexOptions.IgnoreCase),
+                "Ticket" => Regex.IsMatch(buf, @"^[0-9]{7}$"),
+                "Pasport" => Regex.IsMatch(buf, @"^[A-W]{2}[0-9]{5}$"),
+                "Password" => Regex.IsMatch(buf, @"^[0-9\|a-w]{6}$", RegexOptions.IgnoreCase),
+                _ => false
+            };
 
-                case "Ticket":
-                    foreach (char i in s) if (!char.IsDigit(i) || s.Length != 7) { return false; }
-                    break;
-
-                case "Pasport":
-                    foreach (char i in s) if (!char.IsDigit(i) || s.Length != 6) { return false; }
-                    break;
-            }
-            return true;
         }
     }
 }
