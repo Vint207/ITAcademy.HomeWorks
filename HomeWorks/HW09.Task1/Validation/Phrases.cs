@@ -5,7 +5,7 @@ namespace HW09.Task1
     sealed class Phrases
     {
         internal static readonly string[] Greeting = new string[] { "Привет", "Здравствуй", "Салют", "Будь здоров", "Как дела", "Hello", "Hi", "Что как",
-        "Приетсвую тебя", "Хеллоу", "Хай", "Как сам", "Даров"};
+        "Приетствую тебя", "Хеллоу", "Хай", "Как сам", "Даров"};
 
         internal static readonly string[] Prove = new string[] { "принят", "учтен", "прошел обработку", "подтвержден", "одобрен", "валидирован", "подходит" };
 
