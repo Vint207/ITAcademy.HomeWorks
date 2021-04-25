@@ -2,10 +2,11 @@
 
 namespace HW09.Task1
 {
-    class Sushi
+    public sealed class Sushi
     {
-        internal Sushi() { }
-        internal Sushi(string name, double price) { Name = name; Price = price; }
+
+        internal Sushi(string name) { Name = name; }
+        internal Sushi(string name, double price) : this(name) { Price = price; }
 
         internal string Name { get; set; }
         internal double Price { get; set; }

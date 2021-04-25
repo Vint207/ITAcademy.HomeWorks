@@ -1,4 +1,5 @@
 ﻿using HW09.Task1.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace HW09.Task1
@@ -7,25 +8,25 @@ namespace HW09.Task1
     {
 
         static List<User> _userList = new();
+        event BaseChanged<User> _baseChangedEvent;
 
-        public delegate void UserBaseChanged(User user);
-        public event UserBaseChanged baseChangedEvent;
+        public UserBase(BaseChanged<User> del) { _baseChangedEvent = del; }
 
         public void AddItem(User user)
         {
             _userList.Add(user);
-            baseChangedEvent?.Invoke(user);
+            _baseChangedEvent?.Invoke(user);
         }
 
         public void DeleteItem(User user)
         {
             _userList.Remove(_userList.Find(item => item.Name == user.Name && item.Password == user.Password));
-            baseChangedEvent?.Invoke(user);
+            _baseChangedEvent?.Invoke(user);
         }
 
         public User GetItem(User user)
         {
-            baseChangedEvent?.Invoke(user);
+            _baseChangedEvent?.Invoke(user);
             return _userList.Find(item => item.Name == user.Name && item.Password == user.Password);
         }
     }

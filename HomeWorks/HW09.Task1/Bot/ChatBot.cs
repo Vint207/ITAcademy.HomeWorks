@@ -6,19 +6,20 @@ namespace HW09.Task1
 {
     sealed class ChatBot
     {
-        public string botName = "Гробик";
         UserBase _userBase;
-        SushiBase _sushiBase;
+        SushiBase _sushiBase;   
+        string _botName;
 
-        public ChatBot(UserBase userBase, SushiBase sushiBase)
+        public ChatBot()
         {
-            _userBase = userBase;
-            _sushiBase = sushiBase;
+            _userBase = new(EventMethods.UserBaseChanged);
+            _sushiBase = new(EventMethods.SushiBaseChanged);
+            _botName = "Гробик"; 
         }
 
         public void Greeting()
         {
-            WriteLine($"{Phrase("Greet")}. Звать меня {botName}. Ты зарегистрирован?");
+            WriteLine($"{Phrase("Greet")}. Звать меня {_botName}. Ты зарегистрирован?");
 
             if (CheckInfo()) { Intering(); }
 
@@ -94,28 +95,20 @@ namespace HW09.Task1
             if (!CheckInfo()) { return; }
 
             WriteLine($"{Phrase("Praise")}, {user.Name}, какие суши ты хочешь?");
-
             _sushiBase.GetAllItems();
-       
 
 
-            //CheckInfo("Ticket", out user.ticket);
-            //WriteLine($"Номер билета {user.ticket} {Phrase("Prove")}.");
 
-            //WriteLine($"{user.name}, введи 6 цифр номера паспорта:");
-            //CheckInfo("Pasport", out user.pasport);
-            //WriteLine($"Номер паспорта {user.pasport} {Phrase("Prove")}.");
-
-            //WriteLine($"{user.name}, у тебя есть багаж?");
-            //user.baggage = CheckInfo() ? "Есть": "Нет";
-
-            //if (user.baggage.Equals("Есть"))
-            //{
-            //    WriteLine($"{user.name}, в багаже есть что-нибудь запрещенное?");
-            //    user.contraband = CheckInfo() ? "Есть" : "Нет";
-            //    if (user.contraband.Equals("Есть")) { WriteLine($"Я звоню копам!"); return; }
-            //}
-            //WriteLine($"{Phrase("Praise")}, {user.name}, можешь лететь!");
-        }
+            WriteLine($"{user.Name}, Введи суши для добавления в корзину");
+            Sushi sushi = _sushiBase.GetItem(new(ReadLine()));
+            WriteLine(sushi.Name);
+            ReadLine();
+            user.bin.AddItem(sushi);
+            WriteLine();
+            _sushiBase.GetAllItems();
+            _sushiBase.DeleteItem(sushi);        
+            WriteLine();
+            user.bin.GetAllItems();
+        }     
     }
 }

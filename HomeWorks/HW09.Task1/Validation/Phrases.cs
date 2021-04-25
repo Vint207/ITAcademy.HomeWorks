@@ -21,23 +21,19 @@ namespace HW09.Task1
         internal static readonly string[] Upset = new string[] { "Почему?", "Мда...", "Это так сложно?", "Тогда ничем не могу помочь.", "Касса возле входа.", "Как так?",
          "Это несложно.", "Чего ты ждешь?", "Жду.", "Буду ждать."};
 
-        /// <summary>
-        /// Returns random phrase from certain array
-        /// </summary>
-        /// <returns></returns>
         internal static string Phrase(string s)
         {
             Random rand = new();
-            switch (s)
+            return s switch
             {
-                case "Greet": return Greeting[rand.Next(0, Greeting.Length)];
-                case "Prove": return Prove[rand.Next(0, Prove.Length)];
-                case "Wrong1": return WrongPhrase1[rand.Next(0, WrongPhrase1.Length)];
-                case "Wrong2": return WrongPhrase2[rand.Next(0, WrongPhrase2.Length)];
-                case "Praise": return Praise[rand.Next(0, Praise.Length)];
-                case "Upset": return Upset[rand.Next(0, Upset.Length)];
-            }
-            return "???";
+                "Greet" => Greeting[rand.Next(0, Greeting.Length)],
+                "Prove" => Prove[rand.Next(0, Prove.Length)],
+                "Wrong1" => WrongPhrase1[rand.Next(0, WrongPhrase1.Length)],
+                "Wrong2" => WrongPhrase2[rand.Next(0, WrongPhrase2.Length)],
+                "Praise" => Praise[rand.Next(0, Praise.Length)],
+                "Upset" => Upset[rand.Next(0, Upset.Length)],
+                _ => "???"
+            };
         }
     }
 }

@@ -1,14 +1,15 @@
-﻿using System;
-using static HW09.Task1.Phrases;
+﻿using static HW09.Task1.Phrases;
 using static HW09.Task1.Validation;
 using static System.Console;
 
 namespace HW09.Task1
 {
-    sealed class User
+    public sealed class User
     {
 
-        internal Lazy<Bin> Bin = new();
+        internal Bin bin;
+
+        public User() { bin = new(EventMethods.BinBaseChanged); }
 
         internal string Name { get; set; }
         internal string Password { get; set; }

@@ -6,27 +6,28 @@ namespace HW09.Task1
 {
     class SushiBase : ICRUD<Sushi>
     {
-        static Dictionary<Sushi, int> sushiList = new()
-        {
-            { new Sushi("Сяке-Маке", 100), 1 },
-            { new Sushi("Филадельфия", 100), 1 },
-            { new Sushi("Суши-Кавасаки", 100), 1 },
-            { new Sushi("Хонда-Ролл", 100), 1 },
-            { new Sushi("Фукусима-Глоу", 100), 1 },
-            { new Sushi("Субару-Импреза", 99999), 1 },
-        };
 
-        public delegate void SushiBaseChanged(Sushi sushi);
-        public event SushiBaseChanged baseChangedEvent;
+        static Dictionary<Sushi, int> _sushiList = new()
+        {
+            { new Sushi("Сяке-Маке", 100), 99 },
+            { new Sushi("Филадельфия", 100), 99 },
+            { new Sushi("Суши-Кавасаки", 100), 99 },
+            { new Sushi("Хонда-Ролл", 100), 99 },
+            { new Sushi("Фукусима-Глоу", 100), 99 },
+            { new Sushi("Субару-Импреза", 99999), 99 },
+        };
+        public event BaseChanged<Sushi> _baseChangedEvent;
+
+        public SushiBase(BaseChanged<Sushi> del) { _baseChangedEvent = del; }
 
         public void AddItem(Sushi sushi)
         {
-            foreach (var item in sushiList)
+            foreach (var item in _sushiList)
             {
                 if (item.Key.Name.Equals(sushi.Name))
                 {
-                    sushiList[item.Key]++;
-                    baseChangedEvent?.Invoke(sushi);
+                    _sushiList[item.Key]++;
+                    _baseChangedEvent?.Invoke(sushi);
                     break;
                 }
             }
@@ -34,12 +35,12 @@ namespace HW09.Task1
 
         public void DeleteItem(Sushi sushi)
         {
-            foreach (var item in sushiList)
+            foreach (var item in _sushiList)
             {
                 if (item.Key.Name.Equals(sushi.Name))
                 {
-                    sushiList[item.Key]--;
-                    baseChangedEvent?.Invoke(sushi);
+                    _sushiList[item.Key]--;
+                    _baseChangedEvent?.Invoke(sushi);
                     break;
                 }
             }
@@ -47,11 +48,11 @@ namespace HW09.Task1
 
         public Sushi GetItem(Sushi sushi)
         {
-            foreach (var item in sushiList)
+            foreach (var item in _sushiList)
             {
-                if (item.Key.Equals(sushi.Name))
+                if (item.Key.Name.Equals(sushi.Name))
                 {
-                    baseChangedEvent?.Invoke(sushi);
+                    _baseChangedEvent?.Invoke(sushi);
                     return item.Key;
                 }
             }
@@ -60,8 +61,8 @@ namespace HW09.Task1
 
         public void GetAllItems()
         {
-            foreach (var item in sushiList)
-            {              
+            foreach (var item in _sushiList)
+            {
                 item.Key.GetInfo();
                 Console.Write($" осталось {item.Value} \n");
             }
