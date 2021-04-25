@@ -1,17 +1,17 @@
 ﻿using System.Reflection;
 using static System.Console;
+using System.Runtime.CompilerServices;
 
 namespace HW09.Task1
 {
-    public delegate void BaseChanged<in T>(T user);
+    public delegate void BaseChanged<in T>(T user, [CallerMemberName] string method = "");
 
     public static class EventMethods
     {
 
-        public static void SushiBaseChanged(Sushi sushi)
+        public static void SushiBaseChanged(Sushi sushi, [CallerMemberName] string method = "")
         {
-            MethodBase metod = MethodBase.GetCurrentMethod();
-            switch (metod.Name)
+            switch (method)
             {
                 case "AddItem":
                     WriteLine($"Добавлены суши {sushi.Name} - {sushi.Price} р");
@@ -25,10 +25,9 @@ namespace HW09.Task1
             }
         }
 
-        public static void UserBaseChanged(User user)
+        public static void UserBaseChanged(User user, [CallerMemberName] string method = "")
         {
-            MethodBase metod = MethodBase.GetCurrentMethod();
-            switch (metod.Name)
+                switch (method)
             {
                 case "AddItem":
                     WriteLine($"Добавлен пользователь {user.Name}");
@@ -42,10 +41,9 @@ namespace HW09.Task1
             }
         }
 
-        public static void BinBaseChanged(Sushi sushi)
+        public static void BinBaseChanged(Sushi sushi, [CallerMemberName] string method = "")
         {
-            MethodBase metod = MethodBase.GetCurrentMethod();
-            switch (metod.Name)
+            switch (method)
             {
                 case "AddItem":
                     WriteLine($"В корзину добавлены суши {sushi.Name} - {sushi.Price} р");
