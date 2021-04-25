@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Reflection;
 using static System.Console;
 
 namespace HW09.Task1
@@ -7,20 +7,52 @@ namespace HW09.Task1
     {
         static void Main()
         {
+
             while (true)
             {
+                SushiBase sushiBase = new();
+                sushiBase.baseChangedEvent += SushiBaseChanged;
+                UserBase userBase = new();
+                userBase.baseChangedEvent += UserBaseChanged;
 
-                SushiBase.itemList.Add(new Sushi("Сяке-Маке", 100));
-                SushiBase.itemList.Add(new Sushi("Филадельфия", 100));
-                SushiBase.itemList.Add(new Sushi("Суши-Кавасаки", 100));
-                SushiBase.itemList.Add(new Sushi("Хонда-Ролл", 100));
-                SushiBase.itemList.Add(new Sushi("Фукусима-Глоу", 100));
-                SushiBase.itemList.Add(new Sushi("Субару-Импреза", 99999));            
-
-                new ChatBot().Greeting();              
+                new ChatBot(userBase, sushiBase).Greeting();
                 ReadLine();
+            }
+        }
 
+        static void SushiBaseChanged(Sushi sushi)
+        {
+            MethodBase metod = MethodBase.GetCurrentMethod();
+            switch (metod.Name)
+            {
+                case "AddItem":
+                    WriteLine($"Добавлены суши {sushi.Name} - {sushi.Price} р");
+                    break;
+                case "DeleteItem":
+                    WriteLine($"Удалены суши {sushi.Name} - {sushi.Price} р");
+                    break;
+                case "GetItem":
+                    WriteLine($"Данные о суши {sushi.Name} - {sushi.Price} р просмотрены");
+                    break;
+            }
+        }
+
+        static void UserBaseChanged(User user)
+        {
+            MethodBase metod = MethodBase.GetCurrentMethod();
+            switch (metod.Name)
+            {
+                case "AddItem":
+                    WriteLine($"Добавлен пользователь {user.Name}");
+                    break;
+                case "DeleteItem":
+                    WriteLine($"Удален пользователь {user.Name}");
+                    break;
+                case "GetItem":
+                    WriteLine($"Данные о пользователе {user.Name} просмотрены");
+                    break;
             }
         }
     }
 }
+

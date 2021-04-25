@@ -6,76 +6,98 @@ namespace HW09.Task1
 {
     sealed class ChatBot
     {
-        public string botName;
+        public string botName = "Гробик";
+        UserBase _userBase;
+        SushiBase _sushiBase;
 
-        public ChatBot() { botName = "Гробик"; }
-
-        public ChatBot(string n) { botName = n; }
+        public ChatBot(UserBase userBase, SushiBase sushiBase)
+        {
+            _userBase = userBase;
+            _sushiBase = sushiBase;
+        }
 
         public void Greeting()
         {
             WriteLine($"{Phrase("Greet")}. Звать меня {botName}. Ты зарегистрирован?");
-            
-            switch (CheckInfo())
-            {
-                case true:
-                    string name, password;
-                    WriteLine("Введи свое имя, чтобы войти в аккаунт.");
-                    CheckInfo("Name", out name);
 
-                    WriteLine("Введи пароль. (6 цифр)");
-                    CheckInfo("Password", out password);
+            if (CheckInfo()) { Intering(); }
 
-                    foreach (User user in UserBase.itemList)
-                    {
-                        if (user.Name.Equals(name) && user.Password.Equals(password))
-                        {
-                            WriteLine($"{user.Name}, ты хочешь изменить данные профиля?)");
-                            if (CheckInfo()) 
-                            { 
-                                Registration(user);
-                                Chat(user); 
-                            }
-                            break;
-                        }
-                    }
-                    break;
-
-                case false:
-                    WriteLine($"Давай создадим аккаунт.");
-                    User newUser = new();
-                    UserBase.itemList.Add(newUser);
-
-                    Registration(newUser);
-                    WriteLine($"{Phrase("Praise")}, {newUser.Name}, теперь ты зарегистрирован в системе.");
-                    Chat(newUser);
-                    break;
-            }
+            Registration();
         }
 
-        void Registration(User user)
+        void Intering()
         {
-            string temp;
+            string name, password;
+            WriteLine("Введи свое имя, чтобы войти в аккаунт.");
+            name = CheckInfo("Name");
+
+            WriteLine("Введи пароль. (6 цифр)");
+            password = CheckInfo("Password");
+
+            User tempUser = _userBase.GetItem(new User() { Name = name, Password = password });
+
+            if (tempUser != null)
+            {
+                WriteLine($"{tempUser.Name}, ты хочешь изменить данные профиля?)");
+                if (CheckInfo()) { ChangingProfile(tempUser); }
+
+                Chat(tempUser);
+            }
+
+            WriteLine("данный пользователь не зарегистрирован.");
+
+            Greeting();
+        }
+
+        void Registration()
+        {
+            User user = new();
+
+            WriteLine($"Давай создадим аккаунт.");
+
             WriteLine($"Введи свое имя. (Используй только буквы)");
-            CheckInfo("Name", out temp);
-            user.Name = temp;
-            WriteLine($"{Phrase("Greet")}, {user.Name}.");
+            user.ChangingName();
 
             WriteLine("Придумай пароль аккаунта. (6 цифр)");
-            CheckInfo("Password", out temp);
-            user.Password = temp;
-            WriteLine($"Пароль {user.Password} {Phrase("Prove")}.");
+            user.ChangingPassword();
+
+            _userBase.AddItem(user);
+            WriteLine($"{Phrase("Praise")}, {user.Name}, теперь ты зарегистрирован в системе.");
+
+            Chat(user);
+        }
+
+        void ChangingProfile(User user)
+        {
+            WriteLine($"Давай изменим данные аккаунта.");
+
+            WriteLine($"Ты хочешь изменить имя?");
+            if (CheckInfo())
+            {
+                WriteLine($"Введи новое имя. (Используй только буквы)");
+                user.ChangingName();
+            }
+
+            WriteLine($"Ты хочешь изменить пароль?");
+            if (CheckInfo())
+            {
+                WriteLine("Придумай новый пароль аккаунта. (6 цифр)");
+                user.ChangingPassword();
+            }
+
+            Chat(user);
         }
 
         void Chat(User user)
         {
             WriteLine($"{user.Name}, хочешь заказать суши?");
-            while (!CheckInfo()) WriteLine($"{Phrase("Upset")} ладно.\nХочешь?");           
-           
-
-            foreach (var item in SushiBase.itemList) { item.GetInfo(); }
+            if (!CheckInfo()) { return; }
 
             WriteLine($"{Phrase("Praise")}, {user.Name}, какие суши ты хочешь?");
+
+            _sushiBase.GetAllItems();
+       
+
 
             //CheckInfo("Ticket", out user.ticket);
             //WriteLine($"Номер билета {user.ticket} {Phrase("Prove")}.");

@@ -7,39 +7,28 @@ namespace HW09.Task1
     sealed class Validation
     {
 
-        /// <summary>
-        /// Calls the console chose option method
-        /// </summary>
-        /// <returns></returns>
         internal static bool CheckInfo() => ConsoleWork.Chose();
 
-        /// <summary>
-        /// Call method Check that validates user's input
-        /// </summary>
-        /// <returns></returns>
-        internal static void CheckInfo(string request, out string s)
+        internal static string CheckInfo(string request)
         {
-            s = ReadLine();
-            while (s == "" || !Check(s, request, out s))
-            { WriteLine($"{Phrase("Wrong1")} {Phrase("Wrong2")}"); s = ReadLine(); }
-        }
-
-        /// <summary>
-        /// Validates user's input
-        /// </summary>
-        /// <returns></returns>
-        private static bool Check(string s, string request, out string buf)
-        {   
-            buf = s;
-            return request switch
+            bool match = false;
+            string result = ReadLine();
+            while (true)
             {
-                "Name" => Regex.IsMatch(buf, @"^[a-w\|а-я]{1,12}$", RegexOptions.IgnoreCase),
-                "Ticket" => Regex.IsMatch(buf, @"^[0-9]{7}$"),
-                "Pasport" => Regex.IsMatch(buf, @"^[A-W]{2}[0-9]{5}$"),
-                "Password" => Regex.IsMatch(buf, @"^[0-9\|a-w]{6}$", RegexOptions.IgnoreCase),
-                _ => false
-            };
+                match = request switch
+                {
+                    "Name" => Regex.IsMatch(result, @"^[a-z\|а-я]{1,12}$", RegexOptions.IgnoreCase),
+                    "Ticket" => Regex.IsMatch(result, @"^[0-9]{7}$"),
+                    "Pasport" => Regex.IsMatch(result, @"^[A-W]{2}[0-9]{5}$"),
+                    "Password" => Regex.IsMatch(result, @"^[0-9\|a-w]{6}$", RegexOptions.IgnoreCase),
+                    _ => false
+                };
 
+                if (!string.IsNullOrEmpty(result) & match) { return result; }
+
+                WriteLine($"{Phrase("Wrong1")} {Phrase("Wrong2")}");
+                result = ReadLine();
+            }
         }
     }
 }

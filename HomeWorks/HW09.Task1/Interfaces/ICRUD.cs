@@ -5,11 +5,8 @@ namespace HW09.Task1.Interfaces
     interface ICRUD<T>
     {
 
-        void AddItem(T item);
+        static void AddItem(T item) { }
 
-        void DeleteItem(T obj);
-
-        T GetItem(string name);
-
+        static void DeleteItem(T item) { }
     }
 }
