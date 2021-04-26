@@ -1,59 +1,63 @@
 ﻿using System;
 using static System.Console;
+using static System.ConsoleKey;
 
 namespace HW09.Task1
 {
-    sealed class ConsoleWork 
+    sealed class ConsoleWork
     {
-        /// <summary>
-        /// Switches options in console and returns it if Enter is pushed
-        /// </summary>
-        /// <returns></returns>        
+
         internal static bool Chose()
         {
-            ConsoleKey key = ConsoleKey.DownArrow;
+            ConsoleKey temp, key = DownArrow;
             CursorVisible = false;
-            Write("Да   \nНет  ");
-            SetCursorPosition(0, GetCursorPosition().Top - 1);
+            bool result = false;
+            SetCursorPosition(0, GetCursorPosition().Top + 1);
             while (true)
             {
-                if (key.Equals(ConsoleKey.UpArrow))
-                { 
-                    if (Overwrite(key, ConsoleKey.DownArrow, true, 2, -1, out key)) { return true; } 
+                if (key == UpArrow)
+                {
+                    Overwrite1(key);
+                    temp = ReadKey().Key;
+                    if (temp == DownArrow) { key = temp; }
+                    if (temp == Enter) { result = true; break; }
                 }
-               
-                if (key.Equals(ConsoleKey.DownArrow))
-                { 
-                    if (Overwrite(key, ConsoleKey.UpArrow, false, 1, 1, out key)) { return false; } 
+                if (key == DownArrow)
+                {
+                    Overwrite1(key);
+                    temp = ReadKey().Key;
+                    if (temp == UpArrow) { key = temp; }
+                    if (temp == Enter) { result = false; break; }
                 }
+
             }
+            SetCursorPosition(0, GetCursorPosition().Top + 1);
+            CursorVisible = true;
+            ForegroundColor = ConsoleColor.White;
+            return result;
         }
 
-        /// <summary>
-        /// Overwrites options with new style
-        /// </summary>
-        /// <returns></returns>
-        internal static bool Overwrite(ConsoleKey key, ConsoleKey nKey, bool write, byte rowOut, int rowIn, out ConsoleKey pKey)
+        internal static void Overwrite1(ConsoleKey key)
         {
-            pKey = key;
-            ForegroundColor = ConsoleColor.Yellow;
-            SetCursorPosition(0, GetCursorPosition().Top + rowIn);
-            if (write) { Write("->Да "); } else { Write("->Нет"); }
-            
-            ForegroundColor = ConsoleColor.Black;
-            while (pKey != ConsoleKey.Enter && pKey != nKey) { pKey = ReadKey().Key; }
-
-            ForegroundColor = ConsoleColor.White;
-            if (pKey.Equals(ConsoleKey.Enter))
+            switch (key)
             {
-                SetCursorPosition(0, GetCursorPosition().Top + rowOut);
-                CursorVisible = true; 
-                return true; 
+                case UpArrow:
+                    SetCursorPosition(0, GetCursorPosition().Top - 1);
+                    ForegroundColor = ConsoleColor.Yellow;
+                    Write("->Да \n");
+                    ForegroundColor = ConsoleColor.White;
+                    Write("Нет  ");
+                    break;
+
+                case DownArrow:
+                    SetCursorPosition(0, GetCursorPosition().Top - 1);
+                    ForegroundColor = ConsoleColor.White;
+                    Write("Да   \n");
+                    ForegroundColor = ConsoleColor.Yellow;
+                    Write("->Нет");
+                    break;
             }
-          
-            SetCursorPosition(0, GetCursorPosition().Top);
-            if (write) { Write("Да   "); } else { Write("Нет  "); }
-            return false;
+            ForegroundColor = ConsoleColor.Black;
         }
     }
 }

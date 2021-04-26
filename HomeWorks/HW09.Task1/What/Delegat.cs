@@ -1,6 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Runtime.CompilerServices;
 using static System.Console;
-using System.Runtime.CompilerServices;
 
 namespace HW09.Task1
 {
@@ -27,7 +26,7 @@ namespace HW09.Task1
 
         public static void UserBaseChanged(User user, [CallerMemberName] string method = "")
         {
-                switch (method)
+            switch (method)
             {
                 case "AddItem":
                     WriteLine($"Добавлен пользователь {user.Name}");
